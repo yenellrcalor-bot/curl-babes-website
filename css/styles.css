@@ -3,13 +3,13 @@
    ============================================= */
 
 :root {
-  --pink: #f4b8c8;
-  --pink-dark: #e89ab0;
-  --pink-light: #fce4ec;
+  --pink: #d9a3b1;
+  --pink-dark: #c48b9a;
+  --pink-light: #f6f1f2;
   --white: #ffffff;
-  --grey-light: #f7f5f6;
-  --grey: #e8e4e6;
-  --grey-mid: #9a9598;
+  --grey-light: #f6f6f6;
+  --grey: #e6e6e6;
+  --grey-mid: #6e6e6e;
   --black: #1a1a1a;
   --green: #2d5a3d;
   --green-light: #3d7a52;
@@ -96,14 +96,14 @@ h1, h2, h3 {
 .btn--primary {
   background: var(--pink);
   color: var(--white);
-  box-shadow: 0 4px 16px rgba(244, 184, 200, 0.45);
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.12);
 }
 
 .btn--primary:hover,
 .btn--primary:focus-visible {
-  background: var(--pink-dark);
+  background: var(--green);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(244, 184, 200, 0.55);
+  box-shadow: 0 6px 20px rgba(45, 90, 61, 0.25);
 }
 
 .btn--whatsapp {
@@ -218,7 +218,7 @@ h1, h2, h3 {
   color: var(--green);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .nav__toggle {
     display: none;
   }
@@ -227,14 +227,15 @@ h1, h2, h3 {
     display: flex;
     position: static;
     flex-direction: row;
-    gap: 2rem;
+    gap: 1.5rem;
     background: none;
     inset: auto;
   }
 
   .nav__link {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 400;
+    white-space: nowrap;
   }
 }
 
@@ -245,7 +246,7 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   background:
-    linear-gradient(160deg, rgba(252, 228, 236, 0.92) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(247, 245, 246, 0.9) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(246, 246, 246, 0.88) 100%),
     url('../curl-babes-assets/salon%20images/professional%20pic%20for%20background.jpg') center / cover no-repeat;
   overflow: hidden;
   padding: 4rem 0;
@@ -284,17 +285,7 @@ h1, h2, h3 {
 }
 
 .hero__decoration {
-  position: absolute;
-  top: -20%;
-  right: -15%;
-  width: 60vw;
-  height: 60vw;
-  max-width: 500px;
-  max-height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
-  opacity: 0.25;
-  pointer-events: none;
+  display: none;
 }
 
 /* Sections */
@@ -426,7 +417,7 @@ h1, h2, h3 {
 }
 
 .carousel__dot.is-active {
-  background: var(--pink);
+  background: var(--black);
   transform: scale(1.2);
 }
 
@@ -537,6 +528,15 @@ h1, h2, h3 {
 .about__lead {
   font-family: var(--font-heading);
   font-size: 1.375rem;
+  margin-bottom: 0.5rem;
+}
+
+.about__creds {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--green);
   margin-bottom: 1.25rem;
 }
 
@@ -555,8 +555,8 @@ h1, h2, h3 {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  background: var(--pink-light);
-  border: 3px solid var(--pink);
+  background: var(--grey-light);
+  border: 1px solid var(--grey);
 }
 
 .about__frame img {
@@ -610,7 +610,9 @@ h1, h2, h3 {
 }
 
 .services-grid__item:hover {
-  background: var(--pink-light);
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  color: var(--green);
 }
 
 .services-grid__item--more {
@@ -714,6 +716,11 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
+.footer__owner {
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+
 .footer__copy {
   font-size: 0.8125rem;
   opacity: 0.6;
@@ -721,13 +728,15 @@ h1, h2, h3 {
 
 .footer__social {
   font-size: 0.875rem;
-  color: var(--pink);
-  transition: color var(--transition);
+  color: var(--white);
+  opacity: 0.85;
+  transition: color var(--transition), opacity var(--transition);
 }
 
 .footer__social:hover,
 .footer__social:focus-visible {
-  color: var(--green-light);
+  color: var(--white);
+  opacity: 1;
 }
 
 /* Floating Action Button */
@@ -747,15 +756,15 @@ h1, h2, h3 {
   font-weight: 600;
   letter-spacing: 0.02em;
   border-radius: 50px;
-  box-shadow: 0 6px 24px rgba(244, 184, 200, 0.55);
+  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.18);
   transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .fab:hover,
 .fab:focus-visible {
-  background: var(--pink-dark);
+  background: var(--green);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(244, 184, 200, 0.65);
+  box-shadow: 0 8px 24px rgba(45, 90, 61, 0.3);
 }
 
 @media (max-width: 480px) {
@@ -764,6 +773,10 @@ h1, h2, h3 {
     right: 1rem;
     left: 1rem;
     text-align: center;
+  }
+
+  .footer {
+    padding-bottom: 5.5rem;
   }
 }
 
