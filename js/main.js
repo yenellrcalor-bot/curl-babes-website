@@ -67,19 +67,22 @@
   const prevBtn = document.getElementById('carousel-prev');
   const nextBtn = document.getElementById('carousel-next');
   const dotsContainer = document.getElementById('carousel-dots');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (track && prevBtn && nextBtn && dotsContainer) {
     const slides = track.querySelectorAll('.carousel__slide');
+    const carouselEl = track.closest('.carousel');
     let currentIndex = 0;
     let autoplayTimer = null;
     const AUTOPLAY_INTERVAL = 5000;
 
-    slides.forEach(function (_, i) {
+    slides.forEach(function (slide, i) {
+      if (slide.classList.contains('is-active')) currentIndex = i;
       const dot = document.createElement('button');
       dot.classList.add('carousel__dot');
       dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      if (i === 0) dot.classList.add('is-active');
+      if (i === currentIndex) dot.classList.add('is-active');
       dot.addEventListener('click', function () {
         goToSlide(i);
         resetAutoplay();
@@ -91,7 +94,9 @@
 
     function goToSlide(index) {
       currentIndex = (index + slides.length) % slides.length;
-      track.style.transform = 'translateX(-' + currentIndex * 100 + '%)';
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === currentIndex);
+      });
       dots.forEach(function (dot, i) {
         dot.classList.toggle('is-active', i === currentIndex);
       });
@@ -133,16 +138,78 @@
     }, { passive: true });
 
     function startAutoplay() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (prefersReducedMotion) return;
+      if (autoplayTimer) return;
       autoplayTimer = setInterval(nextSlide, AUTOPLAY_INTERVAL);
     }
 
-    function resetAutoplay() {
+    function pauseAutoplay() {
       clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+
+    function resetAutoplay() {
+      pauseAutoplay();
       startAutoplay();
     }
 
+    if (carouselEl) {
+      carouselEl.addEventListener('mouseenter', pauseAutoplay);
+      carouselEl.addEventListener('mouseleave', startAutoplay);
+      carouselEl.addEventListener('focusin', pauseAutoplay);
+      carouselEl.addEventListener('focusout', function (e) {
+        if (!carouselEl.contains(e.relatedTarget)) startAutoplay();
+      });
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) pauseAutoplay();
+      else startAutoplay();
+    });
+
+    goToSlide(currentIndex);
     startAutoplay();
+  }
+
+  /* ---- Fade-in on scroll ---- */
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealEls = document.querySelectorAll([
+      '.section__header',
+      '.services-preview',
+      '.salon-feature',
+      '.carousel',
+      '.video-grid__item',
+      '.teaser-card',
+      '.service-card',
+      '.training__photo',
+      '.training__block',
+      '.course-card',
+      '.about-cover',
+      '.about__text',
+      '.about-portrait',
+      '.contact-info',
+      '.contact-map'
+    ].join(', '));
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+
+    revealEls.forEach(function (el) {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.9 && rect.bottom > 40;
+      el.classList.add('reveal');
+      if (inView) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
+    });
   }
 
   /* ---- Footer Year ---- */
