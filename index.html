@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curl Babes — curly hair specialist salon in Paramaribo, Suriname. Cuts, color, styling & more by Yenell.">
+  <title>Curl Babes | Hair Salon Paramaribo</title>
+  <link rel="icon" href="curl-babes-assets/clients/LOGO.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#home" class="nav__logo">
+        <img src="curl-babes-assets/clients/LOGO.png" alt="Curl Babes" class="nav__logo-img">
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#home" class="nav__link">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero / Home -->
+    <section id="home" class="hero">
+      <div class="hero__content container">
+        <p class="hero__eyebrow">Paramaribo, Suriname</p>
+        <h1 class="hero__title">Curl Babes</h1>
+        <p class="hero__tagline">Where every curl finds its confidence — crafted with care, styled with love.</p>
+        <a href="https://www.fresha.com/a/curl-babes-paramaribo-andirastraat-csomrsys?pId=294860"
+           class="btn btn--primary"
+           target="_blank"
+           rel="noopener noreferrer">
+          Book Appointment
+        </a>
+      </div>
+      <div class="hero__decoration" aria-hidden="true"></div>
+    </section>
+
+    <!-- Portfolio Carousel -->
+    <section id="portfolio" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Portfolio</h2>
+          <p class="section__subtitle">A glimpse of the transformations we create every day.</p>
+        </header>
+
+        <div class="carousel" aria-label="Portfolio slideshow">
+          <button class="carousel__btn carousel__btn--prev" id="carousel-prev" aria-label="Previous slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+
+          <div class="carousel__viewport">
+            <ul class="carousel__track" id="carousel-track">
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/clients/curly%20client.png" alt="Curly hair styling by Curl Babes" loading="lazy">
+              </li>
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/clients/updo%20client.png" alt="Updo styling by Curl Babes" loading="lazy">
+              </li>
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/clients/styling%20bridal.png" alt="Bridal hair styling by Curl Babes" loading="lazy">
+              </li>
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/salon%20images/blowout.jpg" alt="Blowout by Curl Babes" loading="lazy">
+              </li>
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/salon%20images/blowout%20%2B%20curly%20clients.jpg" alt="Blowout and curly styling by Curl Babes" loading="lazy">
+              </li>
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/salon%20images/professional%20pic%20for%20portoflio%20or%20bg.jpg" alt="Professional hair styling by Curl Babes" loading="lazy">
+              </li>
+              <li class="carousel__slide">
+                <img src="curl-babes-assets/clients/my%20Training.png" alt="Hair training at Curl Babes" loading="lazy">
+              </li>
+            </ul>
+          </div>
+
+          <button class="carousel__btn carousel__btn--next" id="carousel-next" aria-label="Next slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <div class="carousel__dots" id="carousel-dots" role="tablist" aria-label="Slide navigation"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Videos -->
+    <section class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Watch Our Work</h2>
+          <p class="section__subtitle">See the magic happen — real clients, real results.</p>
+        </header>
+
+        <div class="video-grid">
+          <div class="video-grid__item">
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube.com/embed/QFr0FP80lxo"
+                title="Curl Babes hair work video 1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+          <div class="video-grid__item">
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube.com/embed/4UVrvFCOuHA"
+                title="Curl Babes hair work video 2"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+          <div class="video-grid__item">
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube.com/embed/9IwHKMWoYpk"
+                title="Curl Babes hair work video 3"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaser Links -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="teaser-grid">
+          <a href="#about" class="teaser-card">
+            <span class="teaser-card__icon" aria-hidden="true">✦</span>
+            <h3 class="teaser-card__title">About Me</h3>
+            <p class="teaser-card__text">Meet Yenell — your curly hair specialist with a passion for making you feel beautiful.</p>
+            <span class="teaser-card__link">Learn more →</span>
+          </a>
+          <a href="#services" class="teaser-card">
+            <span class="teaser-card__icon" aria-hidden="true">✦</span>
+            <h3 class="teaser-card__title">Services</h3>
+            <p class="teaser-card__text">From cuts and color to bridal styling — everything your hair deserves.</p>
+            <span class="teaser-card__link">View services →</span>
+          </a>
+          <a href="#contact" class="teaser-card">
+            <span class="teaser-card__icon" aria-hidden="true">✦</span>
+            <h3 class="teaser-card__title">Contact</h3>
+            <p class="teaser-card__text">Find us in Paramaribo — call, WhatsApp, or drop by anytime.</p>
+            <span class="teaser-card__link">Get in touch →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container about">
+        <header class="section__header section__header--left">
+          <h2 class="section__title">About Me</h2>
+        </header>
+        <div class="about__content">
+          <div class="about__text">
+            <p class="about__lead">Hi, I'm <strong>Yenell</strong> — the heart behind Curl Babes.</p>
+            <p>I've been a hair stylist and curly hair specialist since 2019, and every day since then has been driven by the same thing: a deep love for hair and the people who wear it.</p>
+            <p>I specialize in cutting and coloring all hair types — because beautiful hair isn't one-size-fits-all. Whether you're rocking natural curls, sleek straight styles, or something in between, I'm here to bring out your best.</p>
+            <p>I'm ambitious, passionate, and genuinely obsessed with what I do. There's nothing I love more than helping someone leave my chair feeling their most confident and beautiful. That's what Curl Babes is all about.</p>
+            <a href="https://www.fresha.com/a/curl-babes-paramaribo-andirastraat-csomrsys?pId=294860"
+               class="btn btn--primary"
+               target="_blank"
+               rel="noopener noreferrer">
+              Book with Yenell
+            </a>
+          </div>
+          <div class="about__visual">
+            <div class="about__frame">
+              <img src="curl-babes-assets/salon%20images/Cover-about%20me.jpg" alt="Yenell, founder of Curl Babes" loading="lazy">
+            </div>
+            <div class="about__certificate">
+              <img src="curl-babes-assets/certificate%20course%20with%20my%20students.png" alt="Yenell teaching a curl course with students" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Services</h2>
+          <p class="section__subtitle">Everything your hair needs, under one roof.</p>
+        </header>
+
+        <ul class="services-grid">
+          <li class="services-grid__item">Cut</li>
+          <li class="services-grid__item">Wash</li>
+          <li class="services-grid__item">Styling</li>
+          <li class="services-grid__item">Curly Styling</li>
+          <li class="services-grid__item">Straightening</li>
+          <li class="services-grid__item">Blow Outs</li>
+          <li class="services-grid__item">Vitamin Treatments</li>
+          <li class="services-grid__item">Hydration Treatment</li>
+          <li class="services-grid__item">Hair Steaming</li>
+          <li class="services-grid__item">Bridal / Event Styling</li>
+          <li class="services-grid__item">Balayage</li>
+          <li class="services-grid__item">Highlights</li>
+          <li class="services-grid__item">Root Touch-Ups</li>
+          <li class="services-grid__item services-grid__item--more">& more</li>
+        </ul>
+
+        <p class="services-note">Full pricing and details available when you book — click Book Appointment or contact us directly.</p>
+
+        <div class="services-cta">
+          <a href="https://www.fresha.com/a/curl-babes-paramaribo-andirastraat-csomrsys?pId=294860"
+             class="btn btn--primary"
+             target="_blank"
+             rel="noopener noreferrer">
+            Book Appointment
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Contact</h2>
+          <p class="section__subtitle">We'd love to hear from you — book online or reach out directly.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-info__item">
+              <h3 class="contact-info__label">Phone / WhatsApp</h3>
+              <p>
+                <a href="tel:+5978644402" class="contact-info__link">+597 864-4402</a>
+              </p>
+              <a href="https://wa.me/5978644402" class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer">
+                Message on WhatsApp
+              </a>
+            </div>
+
+            <div class="contact-info__item">
+              <h3 class="contact-info__label">Email</h3>
+              <p>
+                <a href="mailto:Yenellrcalor@gmail.com" class="contact-info__link">Yenellrcalor@gmail.com</a>
+              </p>
+            </div>
+
+            <div class="contact-info__item">
+              <h3 class="contact-info__label">Address</h3>
+              <p class="contact-info__address">Andirastraat 40<br>Paramaribo, Suriname</p>
+            </div>
+
+            <div class="contact-info__item">
+              <h3 class="contact-info__label">Instagram</h3>
+              <p>
+                <a href="https://www.instagram.com/curl.babes/" class="contact-info__link contact-info__link--instagram" target="_blank" rel="noopener noreferrer">
+                  @curl.babes
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-map">
+            <iframe
+              src="https://maps.google.com/maps?q=Andirastraat+40,+Paramaribo,+Suriname&output=embed"
+              title="Curl Babes location on Google Maps"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__brand">Curl Babes</p>
+      <p class="footer__copy">&copy; <span id="year"></span> Curl Babes. All rights reserved.</p>
+      <a href="https://www.instagram.com/curl.babes/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Follow Curl Babes on Instagram">
+        Instagram
+      </a>
+    </div>
+  </footer>
+
+  <!-- Floating Book Appointment Button -->
+  <a href="https://www.fresha.com/a/curl-babes-paramaribo-andirastraat-csomrsys?pId=294860"
+     class="fab"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Book Appointment">
+    Book Appointment
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
