@@ -929,39 +929,12 @@ h1, h2, h3 {
   background: var(--grey-light);
 }
 
-.training__gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto 3.5rem;
-}
-
-.training__gallery .training__photo {
-  margin: 0;
-  max-width: none;
-}
-
-.training__gallery .training__photo figcaption {
-  padding: 0.85rem 1rem 1rem;
-  font-size: 0.875rem;
-  color: var(--grey-mid);
-  text-align: center;
-}
-
 .training__photo img {
   width: 100%;
   height: auto;
   max-height: min(70vh, 640px);
   object-fit: contain;
   background: var(--grey-light);
-}
-
-@media (min-width: 720px) {
-  .training__gallery {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
 }
 
 .training__blocks {

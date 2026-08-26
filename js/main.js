@@ -190,7 +190,6 @@
       '.video-grid__item',
       '.teaser-card',
       '.service-card',
-      '.training__gallery',
       '.training__photo',
       '.training__block',
       '.course-card',
