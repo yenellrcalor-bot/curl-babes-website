@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Curl Cut &amp; Styling Course at Curl Babes — a 2-day hands-on course covering curl cutting, styling, and product knowledge.">
   <title>Training | Curl Babes</title>
-  <link rel="icon" href="curl-babes-assets/clients/LOGO%202.png" type="image/png">
+  <link rel="icon" href="curl-babes-assets/LOGO%202.png" type="image/png">
+  <link rel="apple-touch-icon" href="curl-babes-assets/LOGO%202.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
   <header class="site-header" id="site-header">
     <nav class="nav container" aria-label="Main navigation">
       <a href="index.html" class="nav__logo">
-        <img src="curl-babes-assets/clients/LOGO%202.png" alt="Curl Babes" class="nav__logo-img">
+        <img src="curl-babes-assets/clients/LOGO%202.png" alt="Curl Babes" class="nav__logo-img" onerror="this.onerror=null;this.src='curl-babes-assets/clients/LOGO.png'">
       </a>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -57,9 +58,14 @@
       <div class="container">
         <p class="training__intro">Take your curl knowledge to the next level! In our hands-on course, you'll learn how to cut, shape, and style curly hair: from soft waves to tight curls. Discover our favorite techniques, tools, and tips to confidently help every curly-haired client.</p>
 
-        <figure class="training__photo">
-          <img src="curl-babes-assets/certificate%20course%20with%20my%20students.png" alt="Yenell Calor with students after the Curl Cut &amp; Styling Course">
-        </figure>
+        <div class="training__gallery">
+          <figure class="training__photo">
+            <img src="curl-babes-assets/certificate%20course%20with%20my%20students.png" alt="Yenell Calor with students after the Curl Cut &amp; Styling Course">
+          </figure>
+          <figure class="training__photo">
+            <img src="curl-babes-assets/clients/my%20Training.png" alt="Hands-on curl cutting and styling training at Curl Babes">
+          </figure>
+        </div>
 
         <div class="training__blocks">
           <div class="training__block">
@@ -99,6 +105,7 @@
 
   <footer class="footer">
     <div class="container footer__inner">
+      <img src="curl-babes-assets/LOGO%202.png" alt="" class="footer__logo" width="56" height="43">
       <p class="footer__brand">Curl Babes</p>
       <p class="footer__owner">Yenell Calor, Owner</p>
       <p class="footer__location">Paramaribo, Suriname</p>

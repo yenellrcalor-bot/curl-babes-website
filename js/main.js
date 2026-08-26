@@ -67,19 +67,26 @@
   const prevBtn = document.getElementById('carousel-prev');
   const nextBtn = document.getElementById('carousel-next');
   const dotsContainer = document.getElementById('carousel-dots');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const fineHoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const prefersReducedMotion = reducedMotionQuery.matches;
 
   if (track && prevBtn && nextBtn && dotsContainer) {
     const slides = track.querySelectorAll('.carousel__slide');
     const carouselEl = track.closest('.carousel');
+    const swipeRoot = track.closest('.carousel__viewport') || track;
     let currentIndex = 0;
     let autoplayTimer = null;
-    const AUTOPLAY_INTERVAL = 5000;
+
+    function autoplayInterval() {
+      return reducedMotionQuery.matches ? 10000 : 5000;
+    }
 
     slides.forEach(function (slide, i) {
       if (slide.classList.contains('is-active')) currentIndex = i;
       const dot = document.createElement('button');
       dot.classList.add('carousel__dot');
+      dot.setAttribute('type', 'button');
       dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
       if (i === currentIndex) dot.classList.add('is-active');
@@ -120,27 +127,27 @@
       resetAutoplay();
     });
 
-    /* Touch / swipe support */
+    /* Touch / swipe — clientX is more reliable on iPhone than screenX */
     let touchStartX = 0;
-    let touchEndX = 0;
+    let touchStartY = 0;
 
-    track.addEventListener('touchstart', function (e) {
-      touchStartX = e.changedTouches[0].screenX;
+    swipeRoot.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
     }, { passive: true });
 
-    track.addEventListener('touchend', function (e) {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 50) {
-        diff > 0 ? nextSlide() : prevSlide();
+    swipeRoot.addEventListener('touchend', function (e) {
+      const dx = touchStartX - e.changedTouches[0].clientX;
+      const dy = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        dx > 0 ? nextSlide() : prevSlide();
         resetAutoplay();
       }
     }, { passive: true });
 
     function startAutoplay() {
-      if (prefersReducedMotion) return;
       if (autoplayTimer) return;
-      autoplayTimer = setInterval(nextSlide, AUTOPLAY_INTERVAL);
+      autoplayTimer = setInterval(nextSlide, autoplayInterval());
     }
 
     function pauseAutoplay() {
@@ -153,7 +160,9 @@
       startAutoplay();
     }
 
-    if (carouselEl) {
+    /* Pause on hover/keyboard only on desktop. iPhone can fire mouseenter
+       on tap and never mouseleave, which used to freeze autoplay. */
+    if (carouselEl && fineHoverQuery.matches) {
       carouselEl.addEventListener('mouseenter', pauseAutoplay);
       carouselEl.addEventListener('mouseleave', startAutoplay);
       carouselEl.addEventListener('focusin', pauseAutoplay);
@@ -181,12 +190,14 @@
       '.video-grid__item',
       '.teaser-card',
       '.service-card',
+      '.training__gallery',
       '.training__photo',
       '.training__block',
       '.course-card',
       '.about-cover',
       '.about__text',
       '.about-portrait',
+      '.contact-portrait',
       '.contact-info',
       '.contact-map'
     ].join(', '));
