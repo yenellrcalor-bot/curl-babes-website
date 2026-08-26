@@ -4,55 +4,63 @@
   /* ---- Mobile Navigation ---- */
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav__link');
+  const menuLinks = navMenu ? navMenu.querySelectorAll('a') : [];
 
   function closeMenu() {
+    if (!navToggle || !navMenu) return;
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open menu');
     navMenu.classList.remove('is-open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('nav-open');
   }
 
   function openMenu() {
+    if (!navToggle || !navMenu) return;
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Close menu');
     navMenu.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('nav-open');
   }
 
-  navToggle.addEventListener('click', function () {
-    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeMenu() : openMenu();
-  });
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
 
-  navLinks.forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
+    menuLinks.forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
 
-  /* ---- Active Nav Link on Scroll ---- */
-  const sections = document.querySelectorAll('section[id]');
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
 
-  function setActiveLink() {
-    const scrollY = window.scrollY + 100;
-
-    sections.forEach(function (section) {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-
-      if (scrollY >= top && scrollY < top + height) {
-        navLinks.forEach(function (link) {
-          link.classList.remove('is-active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('is-active');
-          }
-        });
+    window.addEventListener('resize', function () {
+      if (window.matchMedia('(min-width: 1024px)').matches) {
+        closeMenu();
       }
     });
   }
 
-  window.addEventListener('scroll', setActiveLink, { passive: true });
-  setActiveLink();
+  /* ---- Active Nav Link by current page ---- */
+  const navLinks = document.querySelectorAll('.nav__link');
+  const path = window.location.pathname;
+  let page = path.substring(path.lastIndexOf('/') + 1);
+  if (!page) page = 'index.html';
+
+  navLinks.forEach(function (link) {
+    const href = link.getAttribute('href');
+    const isHome = (page === 'index.html' || page === '') && href === 'index.html';
+    const isMatch = href === page;
+    if (isHome || isMatch) {
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.remove('is-active');
+      link.removeAttribute('aria-current');
+    }
+  });
 
   /* ---- Portfolio Carousel ---- */
   const track = document.getElementById('carousel-track');
@@ -60,7 +68,7 @@
   const nextBtn = document.getElementById('carousel-next');
   const dotsContainer = document.getElementById('carousel-dots');
 
-  if (track) {
+  if (track && prevBtn && nextBtn && dotsContainer) {
     const slides = track.querySelectorAll('.carousel__slide');
     let currentIndex = 0;
     let autoplayTimer = null;
